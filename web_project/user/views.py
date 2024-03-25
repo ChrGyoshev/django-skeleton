@@ -6,6 +6,26 @@ from django.contrib.auth import authenticate,login
 from rest_framework.permissions import IsAuthenticated
 from django.views import generic as View
 
+from web_project.user.models import User
+
+
+
+class RegisterView(APIView):
+    def post(self,request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({
+                'error':'Email already registered'
+            })
+        
+        user = User.objects.create_user(email=email, password=password)
+        return JsonResponse({'success':'user registration successful'})
+
+
+
+
 
 class LoginView(APIView):
     def post(self, request):
