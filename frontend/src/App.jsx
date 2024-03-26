@@ -5,16 +5,17 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginForm from "./User/Login";
-import LogOut from "./User/LogOut";
-
+import NavigationBar from "./User/LogOut";
+import Register from "./User/Register";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <NavigationBar />
         <Routes>
-          <Route path="/" element={<LoginForm />} />
-          <Route path='register' element= <LogOut /> />
+          <Route path="/" element={<Register />} />
+          <Route path="register" element="" />
         </Routes>
       </BrowserRouter>
     </>
